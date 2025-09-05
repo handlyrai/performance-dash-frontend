@@ -8,10 +8,10 @@ interface SalesRepCardProps {
   name: string;
   role: string;
   avatar?: string;
-  revenue: string;
-  quota: string;
+  sentiment: string;
+  calls: number;
   progress: number;
-  deals: number;
+  avgSentiment: string;
   rank: number;
   className?: string;
 }
@@ -20,10 +20,10 @@ export function SalesRepCard({
   name, 
   role, 
   avatar, 
-  revenue, 
-  quota, 
+  sentiment, 
+  calls, 
   progress, 
-  deals, 
+  avgSentiment, 
   rank,
   className 
 }: SalesRepCardProps) {
@@ -64,19 +64,19 @@ export function SalesRepCard({
         <div className="space-y-4">
           <div className="flex justify-between items-end">
             <div>
-              <p className="text-2xl font-bold text-foreground">{revenue}</p>
-              <p className="text-sm text-muted-foreground">of {quota} quota</p>
+              <p className="text-2xl font-bold text-foreground">{sentiment}</p>
+              <p className="text-sm text-muted-foreground">avg sentiment</p>
             </div>
             <div className="text-right">
-              <p className="text-lg font-semibold text-foreground">{deals}</p>
-              <p className="text-sm text-muted-foreground">deals</p>
+              <p className="text-lg font-semibold text-foreground">{calls}</p>
+              <p className="text-sm text-muted-foreground">calls analyzed</p>
             </div>
           </div>
 
           <div className="space-y-2">
             <div className="flex justify-between">
-              <span className="text-sm text-muted-foreground">Quota Progress</span>
-              <span className="text-sm font-medium text-foreground">{progress}%</span>
+              <span className="text-sm text-muted-foreground">Overall Mood</span>
+              <span className="text-sm font-medium text-foreground">{avgSentiment}</span>
             </div>
             <Progress 
               value={progress} 

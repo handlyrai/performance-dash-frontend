@@ -2,23 +2,24 @@ import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { SalesRepCard } from "@/components/dashboard/SalesRepCard";
 import { RecentActivity } from "@/components/dashboard/RecentActivity";
+import { SentimentAnalysis } from "@/components/dashboard/SentimentAnalysis";
 import { DollarSign, TrendingUp, Users, Target } from "lucide-react";
 
 const Dashboard = () => {
   const metrics = [
     {
-      title: "Total Revenue",
-      value: "$1,234,567",
-      change: "+12.5%",
-      trend: "up" as const,
-      icon: DollarSign
-    },
-    {
-      title: "Monthly Growth",
-      value: "23.8%",
-      change: "+4.2%",
+      title: "Sentiment Score",
+      value: "8.4/10",
+      change: "+0.6",
       trend: "up" as const,
       icon: TrendingUp
+    },
+    {
+      title: "Positive Calls",
+      value: "78%",
+      change: "+5.2%",
+      trend: "up" as const,
+      icon: Target
     },
     {
       title: "Active Reps",
@@ -28,11 +29,11 @@ const Dashboard = () => {
       icon: Users
     },
     {
-      title: "Quota Attainment",
-      value: "89.2%",
-      change: "-2.1%",
-      trend: "down" as const,
-      icon: Target
+      title: "Analyzed Calls",
+      value: "156",
+      change: "+12",
+      trend: "up" as const,
+      icon: DollarSign
     }
   ];
 
@@ -40,55 +41,55 @@ const Dashboard = () => {
     {
       name: "Sarah Chen",
       role: "Senior Sales Executive",
-      revenue: "$184,250",
-      quota: "$200,000",
+      sentiment: "9.2/10",
+      calls: 28,
       progress: 92,
-      deals: 12,
+      avgSentiment: "Positive",
       rank: 1
     },
     {
       name: "Michael Rodriguez",
       role: "Account Executive",
-      revenue: "$156,800",
-      quota: "$180,000",
+      sentiment: "8.7/10",
+      calls: 32,
       progress: 87,
-      deals: 15,
+      avgSentiment: "Positive",
       rank: 2
     },
     {
       name: "Emily Johnson",
       role: "Sales Manager",
-      revenue: "$142,300",
-      quota: "$170,000",
+      sentiment: "8.4/10",
+      calls: 25,
       progress: 84,
-      deals: 18,
+      avgSentiment: "Positive",
       rank: 3
     },
     {
       name: "David Park",
       role: "Sales Representative",
-      revenue: "$128,900",
-      quota: "$160,000",
+      sentiment: "7.9/10",
+      calls: 30,
       progress: 81,
-      deals: 22,
+      avgSentiment: "Neutral",
       rank: 4
     },
     {
       name: "Lisa Thompson",
       role: "Account Executive",
-      revenue: "$118,750",
-      quota: "$150,000",
+      sentiment: "7.6/10",
+      calls: 22,
       progress: 79,
-      deals: 16,
+      avgSentiment: "Neutral",
       rank: 5
     },
     {
       name: "James Wilson",
       role: "Sales Representative",
-      revenue: "$95,400",
-      quota: "$140,000",
+      sentiment: "6.8/10",
+      calls: 18,
       progress: 68,
-      deals: 14,
+      avgSentiment: "Neutral",
       rank: 6
     }
   ];
@@ -121,6 +122,7 @@ const Dashboard = () => {
 
           {/* Sidebar */}
           <div className="space-y-6">
+            <SentimentAnalysis />
             <RecentActivity />
           </div>
         </div>
