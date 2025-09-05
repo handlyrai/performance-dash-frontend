@@ -1,41 +1,9 @@
 import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
-import { MetricCard } from "@/components/dashboard/MetricCard";
 import { SalesRepCard } from "@/components/dashboard/SalesRepCard";
 import { RecentActivity } from "@/components/dashboard/RecentActivity";
 import { SentimentAnalysis } from "@/components/dashboard/SentimentAnalysis";
-import { DollarSign, TrendingUp, Users, Target } from "lucide-react";
 
 const Dashboard = () => {
-  const metrics = [
-    {
-      title: "Sentiment Score",
-      value: "8.4/10",
-      change: "+0.6",
-      trend: "up" as const,
-      icon: TrendingUp
-    },
-    {
-      title: "Positive Calls",
-      value: "78%",
-      change: "+5.2%",
-      trend: "up" as const,
-      icon: Target
-    },
-    {
-      title: "Active Reps",
-      value: "24",
-      change: "+2",
-      trend: "up" as const,
-      icon: Users
-    },
-    {
-      title: "Analyzed Calls",
-      value: "156",
-      change: "+12",
-      trend: "up" as const,
-      icon: DollarSign
-    }
-  ];
 
   const salesReps = [
     {
@@ -99,13 +67,6 @@ const Dashboard = () => {
       <DashboardHeader />
       
       <div className="max-w-7xl mx-auto px-6 py-8 space-y-8">
-        {/* Metrics Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {metrics.map((metric, index) => (
-            <MetricCard key={index} {...metric} />
-          ))}
-        </div>
-
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Sales Team Performance */}
