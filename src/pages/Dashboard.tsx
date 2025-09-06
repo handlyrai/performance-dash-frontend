@@ -1,7 +1,8 @@
 import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
 import { SalesRepCard } from "@/components/dashboard/SalesRepCard";
-import { RecentActivity } from "@/components/dashboard/RecentActivity";
+import { GoogleMeetScheduler } from "@/components/dashboard/GoogleMeetScheduler";
 import { SentimentAnalysis } from "@/components/dashboard/SentimentAnalysis";
+import { RepAnalytics } from "@/components/dashboard/RepAnalytics";
 
 const Dashboard = () => {
 
@@ -84,9 +85,12 @@ const Dashboard = () => {
           {/* Sidebar */}
           <div className="space-y-6">
             <SentimentAnalysis />
-            <RecentActivity />
+            <GoogleMeetScheduler />
           </div>
         </div>
+
+        {/* Detailed Analytics Section */}
+        <RepAnalytics />
       </div>
     </div>
   );
