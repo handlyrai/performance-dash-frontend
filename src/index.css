@@ -8,124 +8,100 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Professional sales dashboard theme */
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-
-    /* Primary - Professional indigo */
-    --primary: 235 84% 58%;
-    --primary-foreground: 0 0% 98%;
-    --primary-muted: 235 84% 58% / 0.1;
-
-    /* Secondary - Clean slate */
-    --secondary: 240 4.8% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    /* Success colors for positive metrics */
-    --success: 142 76% 36%;
-    --success-foreground: 0 0% 98%;
-    --success-muted: 142 76% 36% / 0.1;
-
-    /* Warning for underperforming */
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 9%;
-    --warning-muted: 38 92% 50% / 0.1;
-
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 235 84% 58%;
-
+    /* Gruvbox Dark Theme */
+    --background: 20 14% 16%; /* #282828 */
+    --foreground: 43 13% 90%; /* #ebdbb2 */
+    --card: 20 14% 20%; /* #3c3836 */
+    --card-foreground: 43 13% 90%; /* #ebdbb2 */
+    --popover: 20 14% 16%; /* #282828 */
+    --popover-foreground: 43 13% 90%; /* #ebdbb2 */
+    --primary: 20 81% 56%; /* #fe8019 */
+    --primary-foreground: 20 14% 16%; /* #282828 */
+    --primary-muted: 20 81% 56% / 0.2;
+    --secondary: 27 75% 60%; /* #fabd2f */
+    --secondary-foreground: 20 14% 16%; /* #282828 */
+    --muted: 20 14% 32%; /* #504945 */
+    --muted-foreground: 20 17% 59%; /* #928374 */
+    --accent: 168 76% 55%; /* #8ec07c */
+    --accent-foreground: 20 14% 16%; /* #282828 */
+    --destructive: 0 82% 60%; /* #fb4934 */
+    --destructive-foreground: 43 13% 90%; /* #ebdbb2 */
+    --success: 63 74% 55%; /* #b8bb26 */
+    --success-foreground: 20 14% 16%; /* #282828 */
+    --success-muted: 63 74% 55% / 0.2;
+    --warning: 27 75% 60%; /* #fabd2f */
+    --warning-foreground: 20 14% 16%; /* #282828 */
+    --border: 20 14% 32%; /* #504945 */
+    --input: 20 14% 32%; /* #504945 */
+    --ring: 20 81% 56%; /* #fe8019 */
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Gruvbox Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(20 81% 56%), hsl(27 75% 60%));
+    --gradient-secondary: linear-gradient(135deg, hsl(27 75% 60%), hsl(63 74% 55%));
+    --gradient-success: linear-gradient(135deg, hsl(63 74% 55%), hsl(168 76% 55%));
+    --gradient-card: linear-gradient(135deg, hsl(20 14% 20%), hsl(20 14% 24%));
+    
+    /* Gruvbox Shadows */
+    --shadow-card: 0 4px 6px -1px hsl(20 14% 12% / 0.4), 0 2px 4px -1px hsl(20 14% 12% / 0.2);
+    --shadow-elegant: 0 10px 30px -10px hsl(20 81% 56% / 0.4);
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 20 14% 20%;
+    --sidebar-foreground: 43 13% 90%;
+    --sidebar-primary: 20 81% 56%;
+    --sidebar-primary-foreground: 20 14% 16%;
+    --sidebar-accent: 20 14% 32%;
+    --sidebar-accent-foreground: 43 13% 90%;
+    --sidebar-border: 20 14% 32%;
+    --sidebar-ring: 20 81% 56%;
   }
 
   .light {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    /* Gruvbox Light Theme */
+    --background: 40 18% 97%; /* #fbf1c7 */
+    --foreground: 20 15% 24%; /* #3c3836 */
+    --card: 35 20% 95%; /* #f2e5bc */
+    --card-foreground: 20 15% 24%; /* #3c3836 */
+    --popover: 40 18% 97%; /* #fbf1c7 */
+    --popover-foreground: 20 15% 24%; /* #3c3836 */
+    --primary: 20 81% 43%; /* #d65d0e */
+    --primary-foreground: 40 18% 97%; /* #fbf1c7 */
+    --primary-muted: 20 81% 43% / 0.1;
+    --secondary: 27 75% 47%; /* #d79921 */
+    --secondary-foreground: 20 15% 24%; /* #3c3836 */
+    --muted: 35 20% 88%; /* #e5d5ad */
+    --muted-foreground: 20 15% 45%; /* #665c54 */
+    --accent: 168 76% 42%; /* #458588 */
+    --accent-foreground: 40 18% 97%; /* #fbf1c7 */
+    --destructive: 0 82% 46%; /* #cc241d */
+    --destructive-foreground: 40 18% 97%; /* #fbf1c7 */
+    --success: 63 74% 33%; /* #98971a */
+    --success-foreground: 40 18% 97%; /* #fbf1c7 */
+    --success-muted: 63 74% 33% / 0.1;
+    --warning: 27 75% 47%; /* #d79921 */
+    --warning-foreground: 20 15% 24%; /* #3c3836 */
+    --border: 20 15% 80%; /* #bdae93 */
+    --input: 35 20% 88%; /* #e5d5ad */
+    --ring: 20 81% 43%; /* #d65d0e */
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-
-    --primary: 235 84% 58%;
-    --primary-foreground: 0 0% 98%;
-    --primary-muted: 235 84% 58% / 0.1;
-
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 10% 3.9%;
-
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 10% 3.9%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --success: 142 76% 36%;
-    --success-foreground: 0 0% 98%;
-    --success-muted: 142 76% 36% / 0.1;
-
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 9%;
-    --warning-muted: 38 92% 50% / 0.1;
-
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 235 84% 58%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 235 84% 58%;
-
-    /* Gradients for modern feel */
-    --gradient-primary: linear-gradient(135deg, hsl(235 84% 58%), hsl(235 84% 48%));
-    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 26%));
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(240 3.7% 12.9%));
+    /* Light Gruvbox Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(20 81% 43%), hsl(27 75% 47%));
+    --gradient-secondary: linear-gradient(135deg, hsl(27 75% 47%), hsl(63 74% 33%));
+    --gradient-success: linear-gradient(135deg, hsl(63 74% 33%), hsl(168 76% 42%));
+    --gradient-card: linear-gradient(135deg, hsl(35 20% 95%), hsl(40 18% 97%));
     
-    /* Shadows for depth */
-    --shadow-elegant: 0 10px 30px -10px hsl(235 84% 58% / 0.3);
-    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.4);
-    
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Light Shadows */
+    --shadow-card: 0 4px 6px -1px hsl(20 15% 24% / 0.1), 0 2px 4px -1px hsl(20 15% 24% / 0.06);
+    --shadow-elegant: 0 10px 30px -10px hsl(20 81% 43% / 0.3);
+
+    --sidebar-background: 35 20% 95%;
+    --sidebar-foreground: 20 15% 24%;
+    --sidebar-primary: 20 81% 43%;
+    --sidebar-primary-foreground: 40 18% 97%;
+    --sidebar-accent: 35 20% 88%;
+    --sidebar-accent-foreground: 20 15% 24%;
+    --sidebar-border: 20 15% 80%;
+    --sidebar-ring: 20 81% 43%;
   }
 }
 

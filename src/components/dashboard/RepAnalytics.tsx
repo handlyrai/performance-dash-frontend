@@ -116,27 +116,27 @@ const getScoreColor = (score: number) => {
 
 export function RepAnalytics() {
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-foreground">Detailed Rep Analytics</h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div className="space-y-4">
+      <h2 className="text-xl font-bold text-foreground">Detailed Rep Analytics</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {repsAnalytics.map((rep) => (
           <Card key={rep.name} className="bg-gradient-card shadow-card border-border/50">
-            <CardHeader className="pb-4">
+            <CardHeader className="pb-3">
               <div className="flex items-center gap-3">
-                <Avatar className="h-10 w-10">
+                <Avatar className="h-8 w-8">
                   <AvatarImage src={rep.avatar} alt={rep.name} />
-                  <AvatarFallback className="bg-primary-muted text-primary text-sm font-semibold">
+                  <AvatarFallback className="bg-primary-muted text-primary text-xs font-semibold">
                     {rep.name.split(' ').map(n => n[0]).join('')}
                   </AvatarFallback>
                 </Avatar>
-                <div className="flex-1">
-                  <CardTitle className="text-lg text-foreground">{rep.name}</CardTitle>
+                <div className="flex-1 min-w-0">
+                  <CardTitle className="text-sm text-foreground truncate">{rep.name}</CardTitle>
                   <Badge className={cn("text-xs", getTrendColor(rep.aiAnalysis.trend))}>
                     {rep.aiAnalysis.trend}
                   </Badge>
                 </div>
                 <div className="text-right">
-                  <div className={cn("text-2xl font-bold", getScoreColor(rep.aiAnalysis.score))}>
+                  <div className={cn("text-lg font-bold", getScoreColor(rep.aiAnalysis.score))}>
                     {rep.aiAnalysis.score}
                   </div>
                   <div className="text-xs text-muted-foreground">AI Score</div>
@@ -144,65 +144,41 @@ export function RepAnalytics() {
               </div>
             </CardHeader>
             
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-3">
               {/* Call Metrics */}
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-3 gap-2">
                 <div className="text-center">
                   <div className="flex items-center justify-center mb-1">
-                    <Phone className="h-4 w-4 text-primary mr-1" />
+                    <Phone className="h-3 w-3 text-primary mr-1" />
                   </div>
-                  <div className="text-lg font-semibold text-foreground">{rep.totalCalls}</div>
-                  <div className="text-xs text-muted-foreground">Total Calls</div>
+                  <div className="text-sm font-semibold text-foreground">{rep.totalCalls}</div>
+                  <div className="text-xs text-muted-foreground">Calls</div>
                 </div>
                 
                 <div className="text-center">
                   <div className="flex items-center justify-center mb-1">
-                    <Clock className="h-4 w-4 text-primary mr-1" />
+                    <Clock className="h-3 w-3 text-primary mr-1" />
                   </div>
-                  <div className="text-lg font-semibold text-foreground">{rep.avgCallDuration}</div>
-                  <div className="text-xs text-muted-foreground">Avg Duration</div>
+                  <div className="text-sm font-semibold text-foreground">{rep.avgCallDuration}</div>
+                  <div className="text-xs text-muted-foreground">Avg Time</div>
                 </div>
                 
                 <div className="text-center">
                   <div className="flex items-center justify-center mb-1">
-                    <TrendingUp className="h-4 w-4 text-primary mr-1" />
+                    <TrendingUp className="h-3 w-3 text-primary mr-1" />
                   </div>
-                  <div className="text-lg font-semibold text-foreground">{rep.conversionRate}%</div>
-                  <div className="text-xs text-muted-foreground">Conversion</div>
+                  <div className="text-sm font-semibold text-foreground">{rep.conversionRate}%</div>
+                  <div className="text-xs text-muted-foreground">Convert</div>
                 </div>
               </div>
 
               {/* Conversion Rate Progress */}
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Conversion Rate</span>
+              <div className="space-y-1">
+                <div className="flex justify-between text-xs">
+                  <span className="text-muted-foreground">Conversion</span>
                   <span className="text-foreground font-medium">{rep.conversionRate}%</span>
                 </div>
-                <Progress value={rep.conversionRate} className="h-2" />
-              </div>
-
-              {/* AI Analysis */}
-              <div className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <Brain className="h-4 w-4 text-primary" />
-                  <span className="text-sm font-medium text-foreground">AI Performance Analysis</span>
-                </div>
-                
-                <div className="space-y-2">
-                  <div>
-                    <div className="text-xs font-medium text-success mb-1">Strengths:</div>
-                    <div className="text-xs text-muted-foreground">
-                      {rep.aiAnalysis.strengths.join(" • ")}
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <div className="text-xs font-medium text-warning mb-1">Areas for Improvement:</div>
-                    <div className="text-xs text-muted-foreground">
-                      {rep.aiAnalysis.improvements.join(" • ")}
-                    </div>
-                  </div>
-                </div>
+                <Progress value={rep.conversionRate} className="h-1.5" />
               </div>
             </CardContent>
           </Card>
