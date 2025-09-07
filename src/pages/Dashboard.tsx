@@ -68,31 +68,30 @@ const Dashboard = () => {
       <DashboardHeader />
       
       <div className="max-w-7xl mx-auto px-6 py-6 space-y-6">
-        {/* Main Content */}
-        <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
-          {/* Sales Team Performance */}
-          <div className="xl:col-span-2">
-            <h2 className="text-2xl font-bold text-foreground mb-6">Team Performance</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        {/* Top Section - AI Sentiment Analysis */}
+        <div>
+          <SentimentAnalysis />
+        </div>
+
+        {/* Google Meet Scheduler */}
+        <div>
+          <GoogleMeetScheduler />
+        </div>
+
+        {/* Combined Team Performance and Analytics - Bottom Section */}
+        <div className="space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold text-foreground mb-6">Team Performance & Analytics</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
               {salesReps.map((rep, index) => (
                 <SalesRepCard key={index} {...rep} />
               ))}
             </div>
           </div>
-
-          {/* AI Sentiment Analysis - Expanded */}
-          <div className="xl:col-span-2">
-            <SentimentAnalysis />
-          </div>
+          
+          {/* Detailed Analytics */}
+          <RepAnalytics />
         </div>
-
-        {/* Google Meet Scheduler - Full Width */}
-        <div className="mt-6">
-          <GoogleMeetScheduler />
-        </div>
-
-        {/* Detailed Analytics Section */}
-        <RepAnalytics />
       </div>
     </div>
   );
