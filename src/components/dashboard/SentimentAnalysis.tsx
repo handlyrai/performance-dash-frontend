@@ -84,17 +84,22 @@ export function SentimentAnalysis() {
   };
 
   return (
-    <Card className="bg-gradient-card shadow-card border-border/50">
-      <CardHeader>
-        <CardTitle className="flex items-center space-x-2">
-          <Brain className="h-5 w-5 text-primary" />
-          <span>AI Sentiment Analysis</span>
+    <Card className="bg-gradient-card shadow-elegant border-border/50 h-full">
+      <CardHeader className="pb-4">
+        <CardTitle className="flex items-center space-x-3">
+          <div className="p-2 rounded-lg bg-primary/10">
+            <Brain className="h-6 w-6 text-primary" />
+          </div>
+          <div>
+            <span className="text-xl font-semibold">AI Sentiment Analysis</span>
+            <p className="text-sm text-muted-foreground mt-1">Analyze call transcripts for customer sentiment</p>
+          </div>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Upload Section */}
         <div className="space-y-4">
-          <div className="border-2 border-dashed border-border/50 rounded-lg p-4 text-center hover:border-primary/50 transition-smooth">
+          <div className="border-2 border-dashed border-border/50 rounded-xl p-6 text-center hover:border-primary/50 hover:bg-primary/5 transition-all duration-300">
             <input
               type="file"
               accept=".txt,.docx,.pdf"
@@ -102,53 +107,86 @@ export function SentimentAnalysis() {
               className="hidden"
               id="transcript-upload"
             />
-            <label htmlFor="transcript-upload" className="cursor-pointer">
-              <Upload className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
-              <p className="text-sm text-muted-foreground mb-2">Upload call transcript</p>
-              <Button variant="outline" size="sm" asChild>
-                <span>Choose File</span>
+            <label htmlFor="transcript-upload" className="cursor-pointer block">
+              <Upload className="h-12 w-12 text-muted-foreground mx-auto mb-3" />
+              <h3 className="text-lg font-medium text-foreground mb-2">Upload Call Transcript</h3>
+              <p className="text-sm text-muted-foreground mb-4">Supports .txt, .docx, and .pdf files</p>
+              <Button variant="outline" size="lg" asChild>
+                <span className="px-6 py-2">Choose File</span>
               </Button>
             </label>
           </div>
 
-          <div className="space-y-2">
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-border/50"></div>
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-card px-2 text-muted-foreground">Or</span>
+            </div>
+          </div>
+
+          <div className="space-y-3">
             <Textarea
-              placeholder="Or paste transcript text here..."
+              placeholder="Paste your call transcript here for instant analysis..."
               value={transcript}
               onChange={(e) => setTranscript(e.target.value)}
-              className="min-h-[100px]"
+              className="min-h-[120px] resize-none border-border/50 focus:border-primary/50"
             />
             <Button 
               onClick={analyzeSentiment} 
               disabled={!transcript.trim() || isAnalyzing}
-              className="w-full"
+              className="w-full h-12 text-base font-medium"
+              size="lg"
             >
-              {isAnalyzing ? "Analyzing..." : "Analyze Sentiment"}
+              {isAnalyzing ? (
+                <>
+                  <Brain className="h-4 w-4 mr-2 animate-pulse" />
+                  Analyzing Sentiment...
+                </>
+              ) : (
+                <>
+                  <Brain className="h-4 w-4 mr-2" />
+                  Analyze Sentiment
+                </>
+              )}
             </Button>
           </div>
         </div>
 
         {/* Results Section */}
         {results.length > 0 && (
-          <div className="space-y-3">
-            <h4 className="text-sm font-medium text-foreground">Recent Analysis</h4>
-            {results.slice(0, 3).map((result, index) => {
-              const Icon = getSentimentIcon(result.sentiment);
-              return (
-                <div key={index} className="flex items-start space-x-3 p-3 rounded-lg bg-muted/50">
-                  <Icon className="h-4 w-4 text-muted-foreground mt-1 flex-shrink-0" />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm text-foreground truncate">{result.text}</p>
-                    <div className="flex items-center justify-between mt-1">
-                      <Badge className={`text-xs ${getSentimentColor(result.sentiment)}`}>
-                        {result.sentiment} ({Math.round(result.confidence * 100)}%)
-                      </Badge>
-                      <span className="text-xs text-muted-foreground">{result.timestamp}</span>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h4 className="text-lg font-semibold text-foreground">Recent Analysis Results</h4>
+              <Badge variant="secondary" className="text-xs">
+                {results.length} results
+              </Badge>
+            </div>
+            <div className="space-y-3 max-h-96 overflow-y-auto">
+              {results.map((result, index) => {
+                const Icon = getSentimentIcon(result.sentiment);
+                return (
+                  <div key={index} className="flex items-start space-x-4 p-4 rounded-xl bg-muted/30 hover:bg-muted/50 transition-colors border border-border/30">
+                    <div className="p-2 rounded-lg bg-background/50">
+                      <Icon className="h-5 w-5 text-muted-foreground" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm text-foreground leading-relaxed mb-2">{result.text}</p>
+                      <div className="flex items-center justify-between">
+                        <Badge className={`text-xs font-medium ${getSentimentColor(result.sentiment)}`}>
+                          {result.sentiment.charAt(0).toUpperCase() + result.sentiment.slice(1)} 
+                          <span className="ml-1 opacity-80">
+                            {Math.round(result.confidence * 100)}% confidence
+                          </span>
+                        </Badge>
+                        <span className="text-xs text-muted-foreground">{result.timestamp}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         )}
       </CardContent>

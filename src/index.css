@@ -8,43 +8,43 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Gruvbox Dark Theme */
-    --background: 20 14% 16%; /* #282828 */
-    --foreground: 43 13% 90%; /* #ebdbb2 */
-    --card: 20 14% 20%; /* #3c3836 */
-    --card-foreground: 43 13% 90%; /* #ebdbb2 */
-    --popover: 20 14% 16%; /* #282828 */
-    --popover-foreground: 43 13% 90%; /* #ebdbb2 */
-    --primary: 20 81% 56%; /* #fe8019 */
-    --primary-foreground: 20 14% 16%; /* #282828 */
-    --primary-muted: 20 81% 56% / 0.2;
-    --secondary: 27 75% 60%; /* #fabd2f */
-    --secondary-foreground: 20 14% 16%; /* #282828 */
-    --muted: 20 14% 32%; /* #504945 */
-    --muted-foreground: 20 17% 59%; /* #928374 */
-    --accent: 168 76% 55%; /* #8ec07c */
-    --accent-foreground: 20 14% 16%; /* #282828 */
-    --destructive: 0 82% 60%; /* #fb4934 */
-    --destructive-foreground: 43 13% 90%; /* #ebdbb2 */
-    --success: 63 74% 55%; /* #b8bb26 */
-    --success-foreground: 20 14% 16%; /* #282828 */
-    --success-muted: 63 74% 55% / 0.2;
-    --warning: 27 75% 60%; /* #fabd2f */
-    --warning-foreground: 20 14% 16%; /* #282828 */
-    --border: 20 14% 32%; /* #504945 */
-    --input: 20 14% 32%; /* #504945 */
-    --ring: 20 81% 56%; /* #fe8019 */
+    /* Modern Minimalist Dark Theme */
+    --background: 0 0% 7%; /* #121212 */
+    --foreground: 0 0% 95%; /* #f2f2f2 */
+    --card: 0 0% 10%; /* #1a1a1a */
+    --card-foreground: 0 0% 95%; /* #f2f2f2 */
+    --popover: 0 0% 7%; /* #121212 */
+    --popover-foreground: 0 0% 95%; /* #f2f2f2 */
+    --primary: 217 91% 60%; /* #3b82f6 */
+    --primary-foreground: 0 0% 7%; /* #121212 */
+    --primary-muted: 217 91% 60% / 0.15;
+    --secondary: 220 13% 91%; /* #e5e7eb */
+    --secondary-foreground: 0 0% 7%; /* #121212 */
+    --muted: 0 0% 15%; /* #262626 */
+    --muted-foreground: 0 0% 65%; /* #a6a6a6 */
+    --accent: 142 76% 36%; /* #10b981 */
+    --accent-foreground: 0 0% 95%; /* #f2f2f2 */
+    --destructive: 0 84% 60%; /* #ef4444 */
+    --destructive-foreground: 0 0% 95%; /* #f2f2f2 */
+    --success: 142 76% 36%; /* #10b981 */
+    --success-foreground: 0 0% 95%; /* #f2f2f2 */
+    --success-muted: 142 76% 36% / 0.15;
+    --warning: 38 92% 50%; /* #f59e0b */
+    --warning-foreground: 0 0% 7%; /* #121212 */
+    --border: 0 0% 20%; /* #333333 */
+    --input: 0 0% 15%; /* #262626 */
+    --ring: 217 91% 60%; /* #3b82f6 */
     --radius: 0.5rem;
 
-    /* Gruvbox Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(20 81% 56%), hsl(27 75% 60%));
-    --gradient-secondary: linear-gradient(135deg, hsl(27 75% 60%), hsl(63 74% 55%));
-    --gradient-success: linear-gradient(135deg, hsl(63 74% 55%), hsl(168 76% 55%));
-    --gradient-card: linear-gradient(135deg, hsl(20 14% 20%), hsl(20 14% 24%));
+    /* Modern Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(234 89% 74%));
+    --gradient-secondary: linear-gradient(135deg, hsl(217 91% 60%), hsl(142 76% 36%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(168 76% 42%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 10%), hsl(0 0% 13%));
     
-    /* Gruvbox Shadows */
-    --shadow-card: 0 4px 6px -1px hsl(20 14% 12% / 0.4), 0 2px 4px -1px hsl(20 14% 12% / 0.2);
-    --shadow-elegant: 0 10px 30px -10px hsl(20 81% 56% / 0.4);
+    /* Modern Shadows */
+    --shadow-card: 0 4px 6px -1px hsl(0 0% 0% / 0.2), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+    --shadow-elegant: 0 20px 25px -5px hsl(217 91% 60% / 0.15);
 
     --sidebar-background: 20 14% 20%;
     --sidebar-foreground: 43 13% 90%;
@@ -57,42 +57,42 @@ All colors MUST be HSL.
   }
 
   .light {
-    /* Gruvbox Light Theme */
-    --background: 40 18% 97%; /* #fbf1c7 */
-    --foreground: 20 15% 24%; /* #3c3836 */
-    --card: 35 20% 95%; /* #f2e5bc */
-    --card-foreground: 20 15% 24%; /* #3c3836 */
-    --popover: 40 18% 97%; /* #fbf1c7 */
-    --popover-foreground: 20 15% 24%; /* #3c3836 */
-    --primary: 20 81% 43%; /* #d65d0e */
-    --primary-foreground: 40 18% 97%; /* #fbf1c7 */
-    --primary-muted: 20 81% 43% / 0.1;
-    --secondary: 27 75% 47%; /* #d79921 */
-    --secondary-foreground: 20 15% 24%; /* #3c3836 */
-    --muted: 35 20% 88%; /* #e5d5ad */
-    --muted-foreground: 20 15% 45%; /* #665c54 */
-    --accent: 168 76% 42%; /* #458588 */
-    --accent-foreground: 40 18% 97%; /* #fbf1c7 */
-    --destructive: 0 82% 46%; /* #cc241d */
-    --destructive-foreground: 40 18% 97%; /* #fbf1c7 */
-    --success: 63 74% 33%; /* #98971a */
-    --success-foreground: 40 18% 97%; /* #fbf1c7 */
-    --success-muted: 63 74% 33% / 0.1;
-    --warning: 27 75% 47%; /* #d79921 */
-    --warning-foreground: 20 15% 24%; /* #3c3836 */
-    --border: 20 15% 80%; /* #bdae93 */
-    --input: 35 20% 88%; /* #e5d5ad */
-    --ring: 20 81% 43%; /* #d65d0e */
+    /* Modern Minimalist Light Theme */
+    --background: 0 0% 98%; /* #fafafa */
+    --foreground: 0 0% 15%; /* #262626 */
+    --card: 0 0% 100%; /* #ffffff */
+    --card-foreground: 0 0% 15%; /* #262626 */
+    --popover: 0 0% 98%; /* #fafafa */
+    --popover-foreground: 0 0% 15%; /* #262626 */
+    --primary: 217 91% 60%; /* #3b82f6 */
+    --primary-foreground: 0 0% 98%; /* #fafafa */
+    --primary-muted: 217 91% 60% / 0.1;
+    --secondary: 0 0% 96%; /* #f5f5f5 */
+    --secondary-foreground: 0 0% 15%; /* #262626 */
+    --muted: 0 0% 96%; /* #f5f5f5 */
+    --muted-foreground: 0 0% 45%; /* #737373 */
+    --accent: 142 76% 36%; /* #10b981 */
+    --accent-foreground: 0 0% 98%; /* #fafafa */
+    --destructive: 0 84% 60%; /* #ef4444 */
+    --destructive-foreground: 0 0% 98%; /* #fafafa */
+    --success: 142 76% 36%; /* #10b981 */
+    --success-foreground: 0 0% 98%; /* #fafafa */
+    --success-muted: 142 76% 36% / 0.1;
+    --warning: 38 92% 50%; /* #f59e0b */
+    --warning-foreground: 0 0% 15%; /* #262626 */
+    --border: 0 0% 90%; /* #e5e5e5 */
+    --input: 0 0% 96%; /* #f5f5f5 */
+    --ring: 217 91% 60%; /* #3b82f6 */
 
-    /* Light Gruvbox Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(20 81% 43%), hsl(27 75% 47%));
-    --gradient-secondary: linear-gradient(135deg, hsl(27 75% 47%), hsl(63 74% 33%));
-    --gradient-success: linear-gradient(135deg, hsl(63 74% 33%), hsl(168 76% 42%));
-    --gradient-card: linear-gradient(135deg, hsl(35 20% 95%), hsl(40 18% 97%));
+    /* Light Modern Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(234 89% 74%));
+    --gradient-secondary: linear-gradient(135deg, hsl(217 91% 60%), hsl(142 76% 36%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(168 76% 42%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(0 0% 98%));
     
     /* Light Shadows */
-    --shadow-card: 0 4px 6px -1px hsl(20 15% 24% / 0.1), 0 2px 4px -1px hsl(20 15% 24% / 0.06);
-    --shadow-elegant: 0 10px 30px -10px hsl(20 81% 43% / 0.3);
+    --shadow-card: 0 4px 6px -1px hsl(0 0% 0% / 0.05), 0 2px 4px -1px hsl(0 0% 0% / 0.03);
+    --shadow-elegant: 0 20px 25px -5px hsl(217 91% 60% / 0.1);
 
     --sidebar-background: 35 20% 95%;
     --sidebar-foreground: 20 15% 24%;
