@@ -73,12 +73,7 @@ const Dashboard = () => {
           <SentimentAnalysis />
         </div>
 
-        {/* Google Meet Scheduler */}
-        <div>
-          <GoogleMeetScheduler />
-        </div>
-
-        {/* Combined Team Performance and Analytics - Bottom Section */}
+        {/* Combined Team Performance and Analytics */}
         <div className="space-y-6">
           <div>
             <h2 className="text-2xl font-bold text-foreground mb-6">Team Performance & Analytics</h2>
@@ -91,6 +86,11 @@ const Dashboard = () => {
           
           {/* Detailed Analytics */}
           <RepAnalytics />
+        </div>
+
+        {/* Google Meet Scheduler - Bottom */}
+        <div>
+          <GoogleMeetScheduler />
         </div>
       </div>
     </div>
