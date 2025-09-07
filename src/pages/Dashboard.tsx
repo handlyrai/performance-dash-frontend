@@ -2,7 +2,6 @@ import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
 import { SalesRepCard } from "@/components/dashboard/SalesRepCard";
 import { GoogleMeetScheduler } from "@/components/dashboard/GoogleMeetScheduler";
 import { SentimentAnalysis } from "@/components/dashboard/SentimentAnalysis";
-import { RepAnalytics } from "@/components/dashboard/RepAnalytics";
 
 const Dashboard = () => {
 
@@ -73,19 +72,14 @@ const Dashboard = () => {
           <SentimentAnalysis />
         </div>
 
-        {/* Combined Team Performance and Analytics */}
+        {/* Team Performance */}
         <div className="space-y-6">
-          <div>
-            <h2 className="text-2xl font-bold text-foreground mb-6">Team Performance & Analytics</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-              {salesReps.map((rep, index) => (
-                <SalesRepCard key={index} {...rep} />
-              ))}
-            </div>
+          <h2 className="text-2xl font-bold text-foreground mb-6">Team Performance & Analytics</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {salesReps.map((rep, index) => (
+              <SalesRepCard key={index} {...rep} />
+            ))}
           </div>
-          
-          {/* Detailed Analytics */}
-          <RepAnalytics />
         </div>
 
         {/* Google Meet Scheduler - Bottom */}
