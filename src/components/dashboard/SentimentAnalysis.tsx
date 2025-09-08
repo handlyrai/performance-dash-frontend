@@ -2,7 +2,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { Upload, FileText, Brain, TrendingUp, AlertCircle } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Upload, FileText, Brain, TrendingUp, AlertCircle, User } from "lucide-react";
 import { useState } from "react";
 
 interface SentimentResult {
@@ -15,6 +16,7 @@ interface SentimentResult {
 export function SentimentAnalysis() {
   const [transcript, setTranscript] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [selectedRep, setSelectedRep] = useState<string>("");
   const [results, setResults] = useState<SentimentResult[]>([
     {
       text: "The client seemed very interested in our new features...",
@@ -30,6 +32,15 @@ export function SentimentAnalysis() {
     }
   ]);
 
+  const salesReps = [
+    "Sarah Chen",
+    "Michael Rodriguez", 
+    "Emily Johnson",
+    "David Park",
+    "Lisa Thompson",
+    "James Wilson"
+  ];
+
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -42,14 +53,14 @@ export function SentimentAnalysis() {
   };
 
   const analyzeSentiment = async () => {
-    if (!transcript.trim()) return;
+    if (!transcript.trim() || !selectedRep) return;
     
     setIsAnalyzing(true);
     
     // Simulate API call
     setTimeout(() => {
       const newResult: SentimentResult = {
-        text: transcript.substring(0, 50) + "...",
+        text: `${selectedRep}: ${transcript.substring(0, 50)}...`,
         sentiment: Math.random() > 0.5 ? "positive" : "neutral",
         confidence: 0.8 + Math.random() * 0.2,
         timestamp: "Just now"
@@ -127,6 +138,23 @@ export function SentimentAnalysis() {
           </div>
 
           <div className="space-y-3">
+            <div className="flex gap-3">
+              <div className="flex-1">
+                <Select value={selectedRep} onValueChange={setSelectedRep}>
+                  <SelectTrigger className="border-border/50 focus:border-primary/50">
+                    <User className="h-4 w-4 mr-2 text-muted-foreground" />
+                    <SelectValue placeholder="Select sales representative..." />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {salesReps.map((rep) => (
+                      <SelectItem key={rep} value={rep}>
+                        {rep}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
             <Textarea
               placeholder="Paste your call transcript here for instant analysis..."
               value={transcript}
@@ -135,7 +163,7 @@ export function SentimentAnalysis() {
             />
             <Button 
               onClick={analyzeSentiment} 
-              disabled={!transcript.trim() || isAnalyzing}
+              disabled={!transcript.trim() || !selectedRep || isAnalyzing}
               className="w-full h-12 text-base font-medium"
               size="lg"
             >

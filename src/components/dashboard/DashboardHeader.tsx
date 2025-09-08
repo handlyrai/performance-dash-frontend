@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Search, Download, Calendar, Filter } from "lucide-react";
+import { Search, Calendar } from "lucide-react";
 import heroImage from "@/assets/sales-dashboard-hero.jpg";
 
 export function DashboardHeader() {
@@ -38,22 +38,11 @@ export function DashboardHeader() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="thisWeek">This Week</SelectItem>
                   <SelectItem value="thisMonth">This Month</SelectItem>
                   <SelectItem value="thisQuarter">This Quarter</SelectItem>
                   <SelectItem value="thisYear">This Year</SelectItem>
                 </SelectContent>
               </Select>
-              
-              <Button variant="secondary" size="sm" className="bg-white/20 hover:bg-white/30 text-white border-white/20">
-                <Filter className="h-4 w-4 mr-2" />
-                Filter
-              </Button>
-              
-              <Button variant="secondary" size="sm" className="bg-white/20 hover:bg-white/30 text-white border-white/20">
-                <Download className="h-4 w-4 mr-2" />
-                Export
-              </Button>
             </div>
           </div>
         </div>
