@@ -154,41 +154,6 @@ export function SentimentAnalysis() {
           </div>
         </div>
 
-        {/* Results Section */}
-        {results.length > 0 && (
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <h4 className="text-lg font-semibold text-foreground">Recent Analysis Results</h4>
-              <Badge variant="secondary" className="text-xs">
-                {results.length} results
-              </Badge>
-            </div>
-            <div className="space-y-3 max-h-96 overflow-y-auto">
-              {results.map((result, index) => {
-                const Icon = getSentimentIcon(result.sentiment);
-                return (
-                  <div key={index} className="flex items-start space-x-4 p-4 rounded-xl bg-muted/30 hover:bg-muted/50 transition-colors border border-border/30">
-                    <div className="p-2 rounded-lg bg-background/50">
-                      <Icon className="h-5 w-5 text-muted-foreground" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm text-foreground leading-relaxed mb-2">{result.text}</p>
-                      <div className="flex items-center justify-between">
-                        <Badge className={`text-xs font-medium ${getSentimentColor(result.sentiment)}`}>
-                          {result.sentiment.charAt(0).toUpperCase() + result.sentiment.slice(1)} 
-                          <span className="ml-1 opacity-80">
-                            {Math.round(result.confidence * 100)}% confidence
-                          </span>
-                        </Badge>
-                        <span className="text-xs text-muted-foreground">{result.timestamp}</span>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
       </CardContent>
     </Card>
   );

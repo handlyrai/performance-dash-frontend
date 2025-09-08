@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Brain } from "lucide-react";
+import { CallAnalysisModal } from "./CallAnalysisModal";
+import { useState } from "react";
 
 const repsData = [
   {
@@ -77,7 +79,209 @@ const repsData = [
   }
 ];
 
+const callAnalysisData = {
+  "Sarah Chen": [
+    {
+      id: "1",
+      clientName: "TechCorp Industries",
+      callDuration: "45m",
+      timestamp: "2 hours ago",
+      sentiment: "positive" as const,
+      confidence: 0.92,
+      keyPoints: [
+        "Discussed Q4 expansion plans",
+        "Positive feedback on product roadmap",
+        "Interest in enterprise features"
+      ],
+      outcome: "Scheduled follow-up demo for next week"
+    },
+    {
+      id: "2", 
+      clientName: "Global Solutions Inc",
+      callDuration: "32m",
+      timestamp: "1 day ago",
+      sentiment: "positive" as const,
+      confidence: 0.87,
+      keyPoints: [
+        "Budget approval confirmed",
+        "Implementation timeline discussed",
+        "Training requirements clarified"
+      ],
+      outcome: "Contract sent for review"
+    },
+    {
+      id: "3",
+      clientName: "StartupXYZ",
+      callDuration: "28m", 
+      timestamp: "2 days ago",
+      sentiment: "neutral" as const,
+      confidence: 0.74,
+      keyPoints: [
+        "Pricing concerns raised",
+        "Feature comparison requested",
+        "Decision timeline extended"
+      ],
+      outcome: "Providing competitive analysis"
+    },
+    {
+      id: "4",
+      clientName: "Enterprise Corp",
+      callDuration: "52m",
+      timestamp: "3 days ago", 
+      sentiment: "positive" as const,
+      confidence: 0.89,
+      keyPoints: [
+        "Security requirements discussed",
+        "Integration capabilities confirmed",
+        "Stakeholder buy-in achieved"
+      ],
+      outcome: "Moving to pilot phase"
+    },
+    {
+      id: "5",
+      clientName: "Innovation Labs",
+      callDuration: "35m",
+      timestamp: "4 days ago",
+      sentiment: "positive" as const,
+      confidence: 0.91,
+      keyPoints: [
+        "Use case validation successful",
+        "ROI projections reviewed",
+        "Implementation support discussed"
+      ],
+      outcome: "Proposal approved, contract negotiation starting"
+    }
+  ],
+  "Michael Rodriguez": [
+    {
+      id: "6",
+      clientName: "Manufacturing Co",
+      callDuration: "38m",
+      timestamp: "3 hours ago",
+      sentiment: "positive" as const,
+      confidence: 0.85,
+      keyPoints: [
+        "Process automation benefits explained",
+        "Cost savings calculations reviewed",
+        "Deployment schedule agreed"
+      ],
+      outcome: "Technical evaluation scheduled"
+    },
+    {
+      id: "7",
+      clientName: "Retail Chain Ltd",
+      callDuration: "41m",
+      timestamp: "1 day ago", 
+      sentiment: "neutral" as const,
+      confidence: 0.76,
+      keyPoints: [
+        "Scalability concerns addressed",
+        "Support structure questioned",
+        "Competitor comparison requested"
+      ],
+      outcome: "Preparing detailed comparison report"
+    },
+    {
+      id: "8",
+      clientName: "Healthcare Systems",
+      callDuration: "29m",
+      timestamp: "2 days ago",
+      sentiment: "positive" as const,
+      confidence: 0.88,
+      keyPoints: [
+        "Compliance requirements confirmed",
+        "Data security measures approved",
+        "Integration timeline finalized"
+      ],
+      outcome: "Contract review in progress"
+    },
+    {
+      id: "9", 
+      clientName: "Financial Services",
+      callDuration: "47m",
+      timestamp: "3 days ago",
+      sentiment: "negative" as const,
+      confidence: 0.82,
+      keyPoints: [
+        "Budget constraints discussed",
+        "Feature gaps identified", 
+        "Alternative solutions explored"
+      ],
+      outcome: "Follow-up meeting scheduled to address concerns"
+    },
+    {
+      id: "10",
+      clientName: "Education District",
+      callDuration: "33m",
+      timestamp: "5 days ago",
+      sentiment: "positive" as const,
+      confidence: 0.86,
+      keyPoints: [
+        "User training plan approved",
+        "Rollout phases defined",
+        "Success metrics established"
+      ],
+      outcome: "Pilot program initiated"
+    }
+  ]
+};
+
+// Generate similar data for other reps with different call results
+const generateCallData = (repName: string, basePositive: number) => {
+  const clients = [
+    "Acme Corporation", "Global Dynamics", "Future Tech", "Innovation Hub", "Prime Solutions",
+    "Alpha Industries", "Beta Systems", "Gamma Corp", "Delta Enterprises", "Omega Group"
+  ];
+  
+  return Array.from({ length: 5 }, (_, i) => {
+    const sentimentRandom = Math.random();
+    let sentiment: "positive" | "neutral" | "negative";
+    if (sentimentRandom < basePositive) {
+      sentiment = "positive";
+    } else if (sentimentRandom < 0.7) {
+      sentiment = "neutral"; 
+    } else {
+      sentiment = "negative";
+    }
+    
+    return {
+      id: `${repName}-${i + 1}`,
+      clientName: clients[i % clients.length],
+      callDuration: `${25 + Math.floor(Math.random() * 30)}m`,
+      timestamp: `${i + 1} day${i > 0 ? 's' : ''} ago`,
+      sentiment,
+      confidence: 0.7 + Math.random() * 0.25,
+      keyPoints: [
+        "Product demonstration completed",
+        "Requirements gathering session",
+        "Pricing discussion held"
+      ],
+      outcome: Math.random() < 0.6 ? "Follow-up scheduled" : "Awaiting client decision"
+    };
+  });
+};
+
+// Add call data for remaining reps
+Object.assign(callAnalysisData, {
+  "Emily Johnson": generateCallData("Emily Johnson", 0.8),
+  "David Park": generateCallData("David Park", 0.7), 
+  "Lisa Thompson": generateCallData("Lisa Thompson", 0.65),
+  "James Wilson": generateCallData("James Wilson", 0.55)
+});
+
 export function RepAnalytics() {
+  const [selectedRep, setSelectedRep] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleRepClick = (repName: string) => {
+    setSelectedRep(repName);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedRep(null);
+  };
   const getMoodColor = (mood: string) => {
     if (mood.includes("Highly Positive")) return "text-success";
     if (mood.includes("Positive")) return "text-success";
@@ -102,7 +306,11 @@ export function RepAnalytics() {
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {repsData.map((rep, index) => (
-            <div key={index} className="p-4 rounded-lg bg-muted/30 border border-border/30 space-y-4">
+            <div 
+              key={index} 
+              className="p-4 rounded-lg bg-muted/30 border border-border/30 space-y-4 hover:bg-muted/50 hover:border-primary/30 transition-all duration-200 cursor-pointer hover:shadow-elegant"
+              onClick={() => handleRepClick(rep.name)}
+            >
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="font-semibold text-foreground">{rep.name}</h3>
@@ -166,6 +374,15 @@ export function RepAnalytics() {
             </div>
           ))}
         </div>
+
+        {selectedRep && (
+          <CallAnalysisModal
+            isOpen={isModalOpen}
+            onClose={handleCloseModal}
+            repName={selectedRep}
+            callResults={callAnalysisData[selectedRep as keyof typeof callAnalysisData] || []}
+          />
+        )}
       </CardContent>
     </Card>
   );
