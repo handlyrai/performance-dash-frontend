@@ -1,9 +1,9 @@
 name: Docker Build & Push
-
+# detects when code is pushed on main branch
 on:
   push:
     branches: ["main"]
-
+# Setup the image builder(buildx)
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,13 +14,13 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-
+# log in to docker hub 
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}#secrets I created in actions
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
+# Builds and Pushes image by executing the dockerfile in the repo root
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
